@@ -1,13 +1,12 @@
-echo "     \"Are you sure?\""
+echo -n "Are you sure? [Y/n]"
 read answer
-for response in y Y yes YES Yes; do
+for response in y Y ""; do
     if [ "$answer" = "$response" ]; then
-        echo "     \"Running...\""
+        echo "Hibernating..."
         dbus-send --system --print-reply \
             --dest="org.freedesktop.UPower" \
             /org/freedesktop/UPower \
-            org.freedesktop.UPower.Hibernate
-        return 0 &> /dev/null
+            org.freedesktop.UPower.Hibernate > /dev/null
+	    else echo "Cancelled."
     fi
 done
-echo "     \"Done.\""
