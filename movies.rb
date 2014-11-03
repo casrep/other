@@ -2,6 +2,7 @@ movies = {
 	'Equilibrium' => '4',
 	'LOTR' => '3',
 }
+
 puts "What would you like to do?"
 choice = gets.chomp
 
