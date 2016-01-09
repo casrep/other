@@ -1,3 +1,7 @@
+#!/usr/bin/env ruby
+
+# Training script.
+
 movies = {
 	'Equilibrium' => '4',
 	'LOTR' => '3',

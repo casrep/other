@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# Calculates inflation based on the US dollar at the 3% standard rate.
+
+arg1	= Integer(ARGV[0]) rescue false
+arg2	= Integer(ARGV[1]) rescue false
+
+unless arg1 && arg2
+	puts "\n\t"	+ "This script calculates US dollar inflation at 3%."
+	puts "\n\t"	+ "SYNTAX: cinf <ARG_1> <ARG_2>"
+	puts "\t\t"	+ "ARG_1: Dollar amount in integers and no symbols."
+	puts "\t\t"	+ "ARG_2: Number of years to calculate in integers."
+	puts "\n"
+else
+	amt		= arg1
+	yrs		= arg2
+	inf		= 0.03
+
+	yrs.times do
+		pct	= amt	* inf
+		amt	= amt	+ pct
+	end
+
+	puts "\n\t"	+ "$#{"%.2f" % amt} is $#{arg1} after #{arg2} years."
+	puts "\n"
+end

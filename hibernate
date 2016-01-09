@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Adds hibernate functionality to Ubuntu laptop.
+
 echo -n "Are you sure? [Y/n]"
 read answer
 for response in y Y ""; do
