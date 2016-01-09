@@ -1,0 +1,10 @@
+#!/bin/bash
+
+brightness_file=/sys/class/backlight/acpi_video0/brightness
+brightness=$(< $brightness_file)
+
+if [ $((brightness < 20)) '=' 1 ]
+then
+    brightness=$((brightness + 1))
+    echo -n $brightness > $brightness_file
+fi
