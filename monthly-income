@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# Calculates "napkin corner" estimate of recommended maximum rent (20%) and US monthly income (net and gross) when given an hourly wage in US dollars.
+
+arg	= Integer(ARGV[0]) rescue false
+
+unless arg
+	puts "This script calculates 'napkin corner' estimate of recommended maximum rent (20%) and US monthly income (net and gross) when given an hourly wage in US dollars."
+	puts "SYNTAX: monthly-income <ARG>"
+	puts "\t" + "ARG: Dollar amount in integers and no symbols."
+else
+	amount = arg
+	hours  = 40 # Number of hours in a week.
+	wdays  = 7 # Number of days in a week.
+	mdays  = 30 # Number of days in a month.
+	taxpct = 0.67 # Taxed percentage of income.
+	rntpct = 0.25 # Recommend percentage of gross income dedicated to rent.
+
+	gross = amount * hours / wdays * mdays
+	net   = gross  * taxpct
+	rent  = gross  * rntpct
+
+	puts "RENT"  + "\t" + "$#{"%.2f" % rent}"
+	puts "NET"   + "\t" + "$#{"%.2f" % net}"
+	puts "GROSS" + "\t" + "$#{"%.2f" % gross}"
+end
