@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo -n "Username: "
+read username
+
+echo -n "Password: "
+read -s password
+
+echo
+
+xfreerdp /v:$1:3389 /size:1440x900 /bpp:32 +compression +clipboard /sound /cert-ignore /rfx +fonts +home-drive /u:$username /p:$password &> /dev/null &
